@@ -28,7 +28,12 @@ const UserSchema = new Schema({
 		type: Array
 	},
 	groups : {
-		type: Array
+		type: [mongoose.Types.ObjectId],
+		ref: "group"
+	},
+	roles : {
+		type: [mongoose.Types.ObjectId],
+		ref: "role"
 	}//,
 	// age: {
 	// 	type: Number,
@@ -37,18 +42,6 @@ const UserSchema = new Schema({
 	// 		return this.age > 10
 	// 	}
 	// }
-});
-
-const GroupsSchema = new Schema({
-	groups : {
-		type: Array
-	}
-});
-
-const RolesSchema = new Schema({
-	groups : {
-		type: Array
-	}
 });
 
 module.exports = mongoose.model("user", UserSchema);

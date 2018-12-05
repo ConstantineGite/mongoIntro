@@ -1,15 +1,66 @@
 {
-  "name": "MONGO_INTRU",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "mongoose": "^5.3.14"
-  }
+	"name": "",
+	"version": "0.0.1",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest --runInBand",
+		"docs": "typedoc --out ./docs ./source/ts",
+		"compile": "tsc --pretty --outDir build",
+		"dev": "webpack-dev-server --config ./webpack.dev.config.js --hot --watch --inline",
+		"dev-server": "nodemon --inspect ./build/index.min.js",
+		"prod": "webpack --config ./webpack.prod.config.js",
+		"lint": "tslint -c tslint.json --project ."
+	},
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"author": "BBT",
+	"license": "ISC",
+	"bugs": {
+		"url": ""
+	},
+	"homepage": "",
+	"dependencies": {
+		"express": "^4.16.4",
+		"fs": "0.0.1-security",
+		"lodash": "^4.17.10",
+		"moment": "^2.22.2",
+		"mongodb": "^3.1.6",
+		"mongoose": "^5.2.17",
+		"nodemon": "^1.18.7",
+		"path": "^0.12.7"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.0.0-beta.51",
+		"@babel/core": "^7.0.0-beta.51",
+		"@babel/node": "^7.0.0-beta.54",
+		"@babel/plugin-proposal-class-properties": "^7.0.0-beta.51",
+		"@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.51",
+		"@babel/preset-env": "^7.0.0-beta.51",
+		"@babel/preset-typescript": "^7.0.0-beta.51",
+		"@types/express": "^4.16.0",
+		"@types/jest": "^23.1.1",
+		"@types/node": "^10.3.5",
+		"@types/react": "^16.4.1",
+		"babel-loader": "^8.0.0-beta.4",
+		"babel-plugin-module-resolver": "^3.1.1",
+		"babel-polyfill": "^6.26.0",
+		"copy-webpack-plugin": "^4.5.2",
+		"extract-text-webpack-plugin": "^4.0.0-beta.0",
+		"file-loader": "^1.1.11",
+		"jest": "^23.1.0",
+		"json-loader": "^0.5.7",
+		"prettier": "^1.13.5",
+		"sass-loader": "^7.0.3",
+		"ts-loader": "^4.4.1",
+		"tslint": "^5.10.0",
+		"tslint-config-bbt": "git+https://github.com/blackbird-team/tslint-config-bbt.git",
+		"typedoc": "^0.11.1",
+		"typescript": "^2.9.2",
+		"webpack": "^4.12.0",
+		"webpack-cli": "^3.0.8",
+		"webpack-dev-server": "^3.1.4"
+	}
 }

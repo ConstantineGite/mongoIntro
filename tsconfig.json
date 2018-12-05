@@ -1,0 +1,25 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"noImplicitAny": false,
+		"removeComments": true,
+		"preserveConstEnums": true,
+		"sourceMap": true,
+		"noEmitOnError": true,
+		"pretty": true,
+		"target": "es5",
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
+		"strictNullChecks": true,
+		"esModuleInterop": true,
+		"lib": ["es2015", "dom"],
+		"baseUrl": "./src",
+		"paths": {
+			"~/data/*": ["data/*"],
+			"~/c/*": ["ts/controller/*"]
+		},
+		"typeRoots": ["./src/@types", "node_modules/@types"]
+	},
+	"include": ["src/**/ts/**/*", "src/@types/*"],
+	"exclude": ["node_modules", "**/*.spec.ts"]
+}
