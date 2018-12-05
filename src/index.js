@@ -2,29 +2,36 @@ const { connect, disconnect } = require("./utils/db");
 
 const User = require("./models/user.model");
 
-const find = async (name) => {
-	const user = await User.findOneAndUpdate({ name }, { age : 47 });
+const find = async (login) => {
+	console.log(login, "----- first fild ------>");
+	const user = await User.findOneAndUpdate(login);
 	if (!user) {
-		console.log(`User ${name} not exist`);
-		await create(name);
-		await find(name);
+		console.log(`User ${login} not exist`);
+		await create(login);
+		await find(login);
 		return;
 	}
-	console.log("Vasya найден");
-	console.log(user);
-	user.age = 21;
+	//console.log("Vasya найден");
+	//console.log(user);
+	user.firstName = "фамилия ------>";
+	user.secondName = "goost ----> ----> ---->";
+	user.email = "user@rambler.ru" ;
+	//user.visitingAdress = "user1 user1 user1 user1 user1";
+	user.roles = ["роль 1",  "роль 2", "роль 3"];
+	console.log(user.telephone, "telephone");
 	await user.save();
-	console.log(user)
+	console.log(user);
 };
 
-const create = async (name) => {
-	console.log(`---create ${name}`);
-	return await User.create({ name, age : 5  });
+const create = async (login) => {
+	//console.log(`---create ${login}`);
+	//console.log(login, "login");
+	//return await User.create({ login, email : "user@rambler.ru" });
 };
 
-const deleteByName = async (name) => {
-	console.log(`---delete ${name}`);
-	return await User.findOneAndDelete({ name });
+const deleteByName = async (login) => {
+	//console.log(`---delete ${name}`);
+	//return await User.findOneAndDelete({ name });
 };
 
 connect()
@@ -32,7 +39,7 @@ connect()
 		console.log("---Connection to MongoDB is established");
 	})
 	.then(() => {
-		deleteByName("Vasya");
+		//deleteByName("Vasya");
 	})
 	.then(() => find("Vasya"))
 	.then(disconnect)
