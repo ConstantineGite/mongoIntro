@@ -31,8 +31,8 @@ const server = () => ({
 	target: "node",
 	mode: "production",
 	externals: nodeModules,
-	context: `${__dirname}/src/ts/routing/`,
-	entry: ["babel-polyfill", `${__dirname}/src/ts/routing/index.ts`],
+	context: `${__dirname}/src/ts/`,
+	entry: ["babel-polyfill", `${__dirname}/src/ts/index.ts`],
 	resolve: {
 		extensions: [".ts", ".js", ".json"]
 	},

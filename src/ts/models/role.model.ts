@@ -1,23 +1,23 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 
-import { I_Priviligies } from "./../data/const";
+import { IPriviligies } from "./../data/const";
 
-interface I_Schema extends Document {
-	name: String;
-	priviligies: I_Priviligies[];
+interface ISchema extends Document {
+	name: string;
+	priviligies: IPriviligies[];
 }
 
-const RoleSchema: Schema = new mongoose.Schema({
+const roleSchema: Schema = new mongoose.Schema({
 	name: {
 		type: String,
 		required: true
 	},
 	priviligies: {
-		type: [ Object ],
+		type: [Object],
 		required: true
 	}
 });
 
-const mRole: Model<I_Schema> = mongoose.model<I_Schema>("role", RoleSchema);
+const mRole: Model<ISchema> = mongoose.model<ISchema>("role", roleSchema);
 
 export default mRole;
