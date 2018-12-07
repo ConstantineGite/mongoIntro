@@ -2,6 +2,11 @@ import mongoose from "mongoose";
 
 const { Schema }  = mongoose;
 
+export interface IUserSchema extends mongoose.Document {
+	login: string;
+	roles: string[];
+}
+
 const userSchema = new Schema({
 	login: {
 		type: String
@@ -23,15 +28,15 @@ const userSchema = new Schema({
 	},
 	visitingAdress : {
 		type: String
-	}
+	},
 	// groups : {
 	// 	type: [mongoose.Types.ObjectId],
 	// 	ref: "group"
 	// },
-	// roles : {
-	// 	type: [mongoose.Types.ObjectId],
-	// 	ref: "role"
-	// }
+	roles : [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "role"
+	}]
 });
 
-export default mongoose.model("user", userSchema);
+export default mongoose.model<IUserSchema>("user", userSchema);

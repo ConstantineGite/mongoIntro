@@ -2,7 +2,7 @@ import mongoose, { Document, Model, Schema } from "mongoose";
 
 import { IPriviligies } from "./../data/const";
 
-interface ISchema extends Document {
+interface IRoleSchema extends Document {
 	name: string;
 	priviligies: IPriviligies[];
 }
@@ -18,6 +18,4 @@ const roleSchema: Schema = new mongoose.Schema({
 	}
 });
 
-const mRole: Model<ISchema> = mongoose.model<ISchema>("role", roleSchema);
-
-export default mRole;
+export default mongoose.model<IRoleSchema>("role", roleSchema);

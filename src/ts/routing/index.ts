@@ -1,6 +1,7 @@
 import express, { Response, Request } from "express";
 import { cors, corb } from "./middleware/cors";
 import { router as User } from "./user";
+import { router as Role } from "./roles";
 
 const _API_V = "v1";
 const _PORT = 3000;
@@ -15,6 +16,7 @@ app.get("/", (req: Request, res: Response): void => {
 });
 
 app.use(`/api/${_API_V}/user`, User);
+app.use(`/api/${_API_V}/role`, Role);
 
 export const start = (): void => {
 	app.listen(_PORT, "192.168.10.3", (): void => {

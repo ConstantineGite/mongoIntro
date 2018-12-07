@@ -19,6 +19,6 @@ export interface IPriviligies {
 
 // Уxample
 export const priviligies: IPriviligies[] = [
-	{ action: Priviligies.USER_MANAGEMENT, value: [0, 1, 1, 0] }, // 0110
+	{ action: Priviligies.USER_MANAGEMENT, value: [0, 1, 1, 0] }, 	// 0110
 	{ action: Priviligies.ROLE_MANAGEMENT, value: [0, 1, 1, 0] } 	// 0110
 ];

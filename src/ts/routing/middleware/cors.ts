@@ -9,7 +9,7 @@ export const cors = (req: Request, res: Response, next: NextFunction): void => {
 };
 
 export const corb = (req: Request, res: Response): void => {
-	console.log(req.originalUrl);
+	//console.log(req.originalUrl);
 	res.status(_SUCCESS);
 	res.end();
 };
