@@ -13,6 +13,7 @@ import { Priviligies } from "../ts/data/const";
 //		]
 //	});
 ///	let role = await Role.findOne();
+
 ////////////////////////////////////////////////////////////////////////////////////
 
 const find = async (): Promise<void> => {
@@ -24,27 +25,59 @@ const find = async (): Promise<void> => {
 	// })
 	//console.log(User.find({}).populate().login, "User --- == = == - - - == == -");
 
-	//let linc =  User.findOne({ name: 'Role for test' }).populate('_id');
-	//console.log(linc, "linck this linck linck this licnk");
-	const user = await User.findOne({ login: "Vasya" })
-		.populate({ path: "roles", select: "priviligies", model: Role });
-	console.log(user, " user ---> ----> ----> ");
+	// let linc =  User.findOne({ name: 'Role for test' }).populate('_id');
+	// console.log(linc, "linck this linck linck this licnk");
 
-	const user_id = "";
-	const role_id = "";
+	////-----------------------------------------------POPULATE_TEST-----------------------------------------------////
 
-	User.findById({ _id: user_id }).then((userDoc: IUserSchema): Promise<{}> => {
-		userDoc.roles.push(role_id)
-		return userDoc.save();
-	}).then(() => {
-		console.log(`Role ${role_id} added for User ${user_id}`);
-	});
-};
+	// const user = await User.findOne({ login: "user test2" }).populate({ path: "roles", select: "priviligies", model: Role });
+	// let a = user.roles;
+	// console.log(a, "//---//user roles\\---\\");
 
-dbConnector
-	.connect()
+						// User.create({
+						// 	login: 		"user test4",
+						// 	firstName: 	"user 1",
+						// 	email: 		"awdawdawd",
+						// 	roles:		"awdawdadawdadwad"
+						// });
+	// let U = await User.findOne({ login: "user test3" });
+	// console.log(U, " user U ");
+
+//------------------------------------------------------------------------------------------------------------------
+
+							// const user_id = "5c0b91612636336f34d80531";
+							// const role_id = "5c0a740f0d91e567e0c8764c";
+
+							// User.findById({ _id: user_id }).then((userDoc: IUserSchema): Promise<{}> => {
+							// 	userDoc.roles.push(role_id);
+							// 	return userDoc.save();
+							// }).then(() => {
+							// 	console.log(`Role ${role_id} added for User ${user_id}`);
+							// });
+
+	// User.create({
+	// 	login: 		"user test",
+	// 	firstName: 	"user 1",
+	// 	email: 		"awdawdawd",
+	// 	roles:		user.roles
+	// });
+			// let U = await User.findOne({ login: "user test" });
+			// console.log(U, "user U ");
+
+	};
+
+//--------------------------------------------------------------------------------------------------
+
+////---------------------------------------------POPULATE TEST-------------------------------------------------/////
+///---
+	/*
+
+	*/
+///---
+
+dbConnector.connect()
 	.then(() => {
-		console.log("---Connection to MongoDB is established");
+		console.log("---Connection to MongoDB is established---");
 	})
 	.then(() => {
 		console.log("statrt conect function");

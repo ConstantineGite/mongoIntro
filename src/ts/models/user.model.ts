@@ -29,10 +29,10 @@ const userSchema = new Schema({
 	visitingAdress : {
 		type: String
 	},
-	// groups : {
-	// 	type: [mongoose.Types.ObjectId],
-	// 	ref: "group"
-	// },
+	groups : {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "group"
+	},
 	roles : [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "role"
