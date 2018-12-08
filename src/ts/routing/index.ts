@@ -15,6 +15,12 @@ app.get("/", (req: Request, res: Response): void => {
 	res.send("Hello World!");
 });
 
+app.post(`/api/${_API_V}/mod`, (req: Request, res: Response): void => {
+	//console.log(res, "----res---->");
+	console.log(req, "----req--->");
+	res.send("Hello World!");
+});
+
 app.use(`/api/${_API_V}/user`, User);
 app.use(`/api/${_API_V}/role`, Role);
 
