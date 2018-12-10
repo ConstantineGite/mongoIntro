@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const { Schema }  = mongoose;
 
 export interface IUserSchema extends mongoose.Document {
+	_id: string;
 	login: string;
 	roles: string[];
 }
@@ -17,7 +18,7 @@ const userSchema = new Schema({
 	secondName : {
 		type: String
 	},
-	passwword : {
+	password : {
 		type: String
 	},
 	email : {
@@ -27,6 +28,9 @@ const userSchema = new Schema({
 		type: String
 	},
 	visitingAdress : {
+		type: String
+	},
+	avatar : {
 		type: String
 	},
 	groups : {
