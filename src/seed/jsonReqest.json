@@ -1,0 +1,19 @@
+{
+	
+			"login"           :  "userlogin",
+			"firstName"       :  "userfirstName",
+			"secondName"      :  "userSecondName",
+			"password"        :  "user password",
+			"email"           :  "email@google.com",
+			"telephone"  	  :  "+38478923467",
+			"visitingAndress" : " World Port Center (WPC) Wilhelminakade 909 3072 AP Rotterdam The Netherlands ",
+			"roles":
+			[
+					{
+						"_id": "5c0a74613f088940a864da13"
+					}
+
+			],
+			"groups" : []
+		
+}
