@@ -9,7 +9,6 @@ export { ECollection };
 const _SCHEMAS = [User, Role, Group];
 
 export const createBdObj = async (collection: ECollection, data: Document): Promise<void> => {
-	// console.log(data, "data");
 	Db.model(collection, _SCHEMAS[collection]).create(data);
 };
 
@@ -20,7 +19,7 @@ export const updateBdObj = async (collection: ECollection, data: Document): Prom
 
 export const getDbObj = async (collection: ECollection): Promise<Document[]> =>
 	Db.model(collection, _SCHEMAS[collection]).find({});
-	
+
 export const getDbObjById = async (collection: ECollection, _id: string): Promise<Document | null> =>
 	Db.model(collection, _SCHEMAS[collection]).findById(_id);
 
