@@ -12,9 +12,9 @@ export const createBdObj = async (collection: ECollection, data: Document): Prom
 	Db.model(collection, _SCHEMAS[collection]).create(data);
 };
 
-export const updateBdObj = async (collection: ECollection, data: Document): Promise<void> => {
+export const updateBdObj = async (collection: ECollection, data: Document): Promise<Db.Document | null> => {
 	const { _id, ...rest } = data;
-	Db.model(collection, _SCHEMAS[collection]).findOneAndUpdate({ _id }, rest).exec();
+	return Db.model(collection, _SCHEMAS[collection]).findOneAndUpdate({ _id }, rest).exec();
 };
 
 export const getDbObj = async (collection: ECollection): Promise<Document[]> =>

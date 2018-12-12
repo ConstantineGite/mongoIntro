@@ -9,7 +9,7 @@ const _PORT = 3000;
 const app = express();
 
 app.use(cors);
-app.head("/*", corb);
+app.options("/*", corb);
 
 app.get("/", (req: Request, res: Response): void => {
 	res.send("Hello World!");

@@ -27,7 +27,7 @@ export const routing = (model: ECollection): Router => {
 			.catch(errorHandler.bind(null, res));
 	});
 
-	router.put("/", (req: Request, res: Response): void => {
+	router.put("/*", (req: Request, res: Response): void => {
 		updateBdObj(model, req.body).then(() => res.sendStatus(_OK)).catch(errorHandler.bind(null, res));
 	});
 

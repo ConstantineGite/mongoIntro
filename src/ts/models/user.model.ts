@@ -9,13 +9,13 @@ export interface IUserSchema extends mongoose.Document {
 }
 
 const userSchema = new Schema({
-	login: {
+	userName: {
 		type: String
 	},
 	firstName : {
 		type: String
 	},
-	secondName : {
+	lastName : {
 		type: String
 	},
 	password : {
