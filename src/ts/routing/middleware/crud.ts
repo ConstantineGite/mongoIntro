@@ -22,7 +22,7 @@ export default (req: Request, res: Response, next: NextFunction): void => {
 	try {
 		if (priviligies[0].value[MethodCRUD[req.method]]) return next();
 		res.status(_NOT_VALIDATE_DATE);
-		res.end(err);
+		res.end();
 	} catch (err) {
 		errorHandler(res, err);
 	}
