@@ -18,8 +18,8 @@ const find = async (login) => {
 	user.firstName  	= 	 "фамилия ------>";
 	user.secondName 	= 	 "goost ----> ----> ---->";
 	user.email 			= 	 "user@rambler.ru" ;
-	user.roles 			=	 [{user: "sdf"},   {user: "21dsad"},  {user: "asas"},   {user: "123123123"}];
-	user.groop      	= 	 [{grup: "grup1"}, {grup: "grup2"}, {grup: "grup3"}, {grup: "grup4"}];
+	user.roles 			=	 [ {user: "sdf"},   {user: "21dsad"},  {user: "asas"},   {user: "123123123"}];
+	user.groop      	= 	 [ {grup: "grup1"}, {grup: "grup2"},   {grup: "grup3"},  {grup: "grup4"}];
 	console.log(user.roles, "<---user secondName");
 	await user.save();
 	//console.log(user);

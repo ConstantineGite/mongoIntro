@@ -35,12 +35,12 @@ const userSchema = new Schema({
 	},
 	groups : {
 		type: mongoose.Schema.Types.ObjectId,
-		ref: "group"
+		ref: "groups"
 	},
 	roles : [{
 		type: mongoose.Schema.Types.ObjectId,
-		ref: "role"
+		ref: "roles"
 	}]
 });
 
-export default mongoose.model<IUserSchema>("user", userSchema);
+export default mongoose.model<IUserSchema>("users", userSchema);

@@ -1,12 +1,13 @@
 import Db, { Document } from "mongoose";
 import { ECollection } from "./db";
-import User from "../models/user.model";
-import Role from "../models/role.model";
-import Group from "../models/group.model";
+import Users from "../models/user.model";
+import Roles from "../models/role.model";
+import Groups from "../models/group.model";
+import Provider from "../models/provider";
 
 export { ECollection };
 
-const _SCHEMAS = [User, Role, Group];
+const _SCHEMAS = [Users, Roles, Groups, Provider];
 
 export const createBdObj = async (collection: ECollection, data: Document): Promise<void> => {
 	Db.model(collection, _SCHEMAS[collection]).create(data);
@@ -25,4 +26,27 @@ export const getDbObjById = async (collection: ECollection, _id: string): Promis
 
 export const deleteDbObj = async (collection: ECollection, _id: string): Promise<void> => {
 	Db.model(collection, _SCHEMAS[collection]).findOneAndDelete({ _id }).exec();
+};
+
+export const returnPartial = async (collection: ECollection, _id: string, fields: string ): Promise< object | null> => {
+	let param  = fields.split("%2F");
+	param.shift();
+	if (param[0] === "") param = [];
+	const rValue = Db.model(collection, _SCHEMAS[collection]).find({ _id }, param);
+	return 	(param.length === 0) ? null : rValue;
+};
+
+export const filterResult = async (collection: ECollection, _id: string, fields: string): Promise<object | null> => {
+	// const action = (fields.split(/\?(.*?)\%/)[1] !== null) ? fields.split(/\?(.*?)\%/)[1] : null;
+	const param  = fields.split("%2F");
+	const rValue = Db.model(collection, _SCHEMAS[collection]).find();
+	.populate("Roles")
+	.exec()
+	//  let m =  Db.model(collection, _SCHEMAS[collection]);
+	//  param.shift();
+	//  console.log(param, "|---|-------param-------|---|>");
+	//  const story = m.findOne({ userName: "user555" }).populate( Roles, { "roles" : _id} ).exec(function(error, bands) {
+	// 	console.log("method worck");
+	//  });
+	return 	rValue;
 };

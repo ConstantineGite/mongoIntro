@@ -2,6 +2,7 @@ import express, { Response, Request } from "express";
 import { ECollection } from "../utils/editBD";
 import { cors, corb } from "./middleware/cors";
 import { routing } from "./API";
+import * as fs from "fs";
 
 const _API_V = "v1";
 const _PORT = 80;
@@ -10,9 +11,12 @@ const app = express();
 
 app.use(cors);
 app.options("/*", corb);
+app.use(express.static("./intarface/build/"));
 
 app.get("/", (req: Request, res: Response): void => {
-	res.send("Hello World!");
+	// розкоментировать при продакшене
+	const dataHTML = fs.readFileSync("./intarface/build/index.html");
+	res.end(dataHTML);
 });
 
 for (const route in ECollection) {
@@ -22,7 +26,7 @@ for (const route in ECollection) {
 }
 
 export const start = (): void => {
-	app.listen(_PORT, "185.233.117.46", (): void => {
+	app.listen(_PORT, "192.168.10.3", (): void => {
 		console.log(`Example app listening on port ${_PORT}!`);
 	});
 };

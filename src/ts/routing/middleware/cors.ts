@@ -1,4 +1,5 @@
 import { Response, Request, NextFunction } from "express";
+import { userInfo } from "os";
 
 const _SUCCESS = 200;
 
@@ -10,7 +11,6 @@ export const cors = (req: Request, res: Response, next: NextFunction): void => {
 };
 
 export const corb = (req: Request, res: Response): void => {
-	//console.log(req.originalUrl);
 	res.status(_SUCCESS);
 	res.end();
 };

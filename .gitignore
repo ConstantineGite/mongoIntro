@@ -6,13 +6,3 @@
 
 # Prod build
 /build/*
-
-# Media files
-/source/video/*
-
-# npm
-npm-debug.log
-/package-lock.json
-
-# test dummy
-/test/existent/*

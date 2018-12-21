@@ -7,7 +7,7 @@ interface IRoleSchema extends Document {
 	priviligies: IPriviligies[];
 }
 
-const roleSchema: Schema = new mongoose.Schema({
+const providerSchema: Schema = new mongoose.Schema({
 	name: {
 		type: String,
 		required: true
@@ -18,4 +18,4 @@ const roleSchema: Schema = new mongoose.Schema({
 	}
 });
 
-export default mongoose.model<IRoleSchema>("roles", roleSchema);
+export default mongoose.model<IRoleSchema>("provider", providerSchema);
