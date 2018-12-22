@@ -22,7 +22,7 @@ app.get("/", (req: Request, res: Response): void => {
 for (const route in ECollection) {
 	const path = route.toLowerCase();
 	const collection = ECollection[route.toString()];
-	app.use(`/api/${_API_V}/${path}`, routing(collection));
+	app.use(`/api/${_API_V}/${path}`, routing(collection, ECollection[route.toString()]));
 }
 
 export const start = (): void => {

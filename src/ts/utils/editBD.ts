@@ -4,6 +4,8 @@ import Users from "../models/user.model";
 import Roles from "../models/role.model";
 import Groups from "../models/group.model";
 import Provider from "../models/provider";
+import { test } from "../utils/servisesDB";
+//import { string } from "prop-types";
 
 export { ECollection };
 
@@ -28,7 +30,7 @@ export const deleteDbObj = async (collection: ECollection, _id: string): Promise
 	Db.model(collection, _SCHEMAS[collection]).findOneAndDelete({ _id }).exec();
 };
 
-export const returnPartial = async (collection: ECollection, _id: string, fields: string ): Promise< object | null> => {
+export const returnPartial = async (collection: ECollection, _id: string, fields: string): Promise< object | null> => {
 	let param  = fields.split("%2F");
 	param.shift();
 	if (param[0] === "") param = [];
@@ -36,17 +38,15 @@ export const returnPartial = async (collection: ECollection, _id: string, fields
 	return 	(param.length === 0) ? null : rValue;
 };
 
-export const filterResult = async (collection: ECollection, _id: string, fields: string): Promise<object | null> => {
-	// const action = (fields.split(/\?(.*?)\%/)[1] !== null) ? fields.split(/\?(.*?)\%/)[1] : null;
-	const param  = fields.split("%2F");
-	const rValue = Db.model(collection, _SCHEMAS[collection]).find();
-	.populate("Roles")
-	.exec()
-	//  let m =  Db.model(collection, _SCHEMAS[collection]);
-	//  param.shift();
-	//  console.log(param, "|---|-------param-------|---|>");
-	//  const story = m.findOne({ userName: "user555" }).populate( Roles, { "roles" : _id} ).exec(function(error, bands) {
-	// 	console.log("method worck");
-	//  });
-	return 	rValue;
+export const filterResult = async (collection: ECollection, _id: string, fields: string): Promise< object | null> => {
+	const a = "users";
+	const rValue = Roles.find({ _id }).populate({ path: "roles", select: "priviligies", model: Roles });
+	//console.log(test, "\-\*|test|*/-/");
+	// console.log(rValue);
+	// console.log(_SCHEMAS[a], 	"------USERS----------->");
+	// console.log(colection["users", "colection -------> -------> ---------->");
+	// const testValue = Db.model("user", User).find({ _id });
+	// console.log(rValue, "----rValue--->");
+	// console.log(_SCHEMAS, "our _SCHEMAS --->");
+	return test();
 };
