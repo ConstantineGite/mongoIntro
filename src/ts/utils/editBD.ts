@@ -4,7 +4,8 @@ import Users from "../models/user.model";
 import Roles from "../models/role.model";
 import Groups from "../models/group.model";
 import Provider from "../models/provider";
-import { test } from "../utils/servisesDB";
+import { populations } from "../utils/servisesDB";
+//import url from "url";
 //import { string } from "prop-types";
 
 export { ECollection };
@@ -33,20 +34,21 @@ export const deleteDbObj = async (collection: ECollection, _id: string): Promise
 export const returnPartial = async (collection: ECollection, _id: string, fields: string): Promise< object | null> => {
 	let param  = fields.split("%2F");
 	param.shift();
+	console.log(param, "param");
 	if (param[0] === "") param = [];
 	const rValue = Db.model(collection, _SCHEMAS[collection]).find({ _id }, param);
 	return 	(param.length === 0) ? null : rValue;
 };
 
 export const filterResult = async (collection: ECollection, _id: string, fields: string): Promise< object | null> => {
-	const a = "users";
-	const rValue = Roles.find({ _id }).populate({ path: "roles", select: "priviligies", model: Roles });
-	//console.log(test, "\-\*|test|*/-/");
-	// console.log(rValue);
-	// console.log(_SCHEMAS[a], 	"------USERS----------->");
-	// console.log(colection["users", "colection -------> -------> ---------->");
-	// const testValue = Db.model("user", User).find({ _id });
-	// console.log(rValue, "----rValue--->");
-	// console.log(_SCHEMAS, "our _SCHEMAS --->");
-	return test();
+	const path = fields.replace(/%2B/g, ":").split("%2F");
+	path.shift();
+	const param = path.map((elem: string, i: number) => {
+		const el = elem.split(":");
+		const obj = {};
+		obj[el[0]] = el[1];
+		return obj;
+	});
+	console.log(param, "param1");
+	return Db.model(collection, _SCHEMAS[collection]).find({$and: param});
 };

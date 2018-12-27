@@ -9,7 +9,7 @@ export { ECollection };
 
 const _SCHEMAS = [Users, Roles, Groups, Provider];
 
-export const  test = async (): Promise< object | null> => {
-	const  rValue = Users.find({}).populate({ path: "roles", select: "priviligies", model: Roles });
+export const  populations = async (collection: ECollection, id: string, fields: string): Promise< object | null> => {
+	const  rValue = Users.find({ _id: id }).populate({ path: "roles", select: "priviligies", model: Roles });
 	return rValue;
 };

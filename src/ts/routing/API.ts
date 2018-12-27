@@ -23,11 +23,23 @@ export const routing = (model: ECollection, allModels: ECollection): Router => {
 			console.log("provider");
 		}
 		getDbObj(model).then((r: unknown) => res.end(JSON.stringify(r))).catch(errorHandler.bind(null, res));
-
 	});
 
 	router.get("/:id", (req: Request, res: Response): void => {
 		filterResult(allModels,  req.params.id, req.url).then((r: unknown) => res.end(JSON.stringify(r)));
+		//console.log(req, "|||req|||url|||split|||");
+		// returnPartial(model, req.params.id, req.url)
+		// .then((r: unknown) => {
+
+		// 	if (r !== null) res.end(JSON.stringify(r));
+
+		// }).catch(errorHandler.bind(null, res)).then(() => {
+
+		// 	getDbObjById(model, req.params.id)
+		// 	.then((r: unknown) => res.end(JSON.stringify(r)))
+		// 	.catch(errorHandler.bind(null, res));
+
+		// });
 	});
 
 	router.put("/*", (req: Request, res: Response): void => {
