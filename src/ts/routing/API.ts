@@ -2,7 +2,9 @@ import { Router, Request, Response } from "express";
 import CRUD, { errorHandler } from "./middleware/crud";
 import bodyParser from "body-parser";
 import { createBdObj, returnPartial, updateBdObj, getDbObj, getDbObjById, deleteDbObj, ECollection, filterResult } from "../utils/editBD";
+import { pagination } from "../utils/servisesDB";
 import fs from "fs";
+import url from "url";
 
 const _NOT_ACCEPTABLE = 406;
 const _OK = 200;
@@ -19,8 +21,11 @@ export const routing = (model: ECollection, allModels: ECollection): Router => {
 	});
 
 	router.get("/", (req: Request, res: Response): void => {
+		const paramUrl = url.parse(req.url, {parseQueryString: true}).query;
 		if (req.baseUrl === "/api/v1/provider") {
 			console.log("provider");
+		} else if(paramUrl.lim === "y") {
+			pagination(allModels,  req.params.id, paramUrl).then((r: unknown) => res.end(JSON.stringify(r)));
 		}
 		getDbObj(model).then((r: unknown) => res.end(JSON.stringify(r))).catch(errorHandler.bind(null, res));
 	});

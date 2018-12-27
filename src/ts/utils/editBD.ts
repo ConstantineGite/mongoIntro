@@ -4,9 +4,7 @@ import Users from "../models/user.model";
 import Roles from "../models/role.model";
 import Groups from "../models/group.model";
 import Provider from "../models/provider";
-import { populations } from "../utils/servisesDB";
-//import url from "url";
-//import { string } from "prop-types";
+import { populations, pagination } from "../utils/servisesDB";
 
 export { ECollection };
 
@@ -44,11 +42,12 @@ export const filterResult = async (collection: ECollection, _id: string, fields:
 	const path = fields.replace(/%2B/g, ":").split("%2F");
 	path.shift();
 	const param = path.map((elem: string, i: number) => {
-		const el = elem.split(":");
-		const obj = {};
-		obj[el[0]] = el[1];
+		const el 	= elem.split(":");
+		const obj 	= {};
+		obj[el[0]] 	= el[1];
 		return obj;
 	});
-	console.log(param, "param1");
-	return Db.model(collection, _SCHEMAS[collection]).find({$and: param});
+	//return Db.model(collection, _SCHEMAS[collection]).find({$and: param});
+	//return populations(collection, _id, fields);
+	//return pagination(collection, _id, fields);
 };
