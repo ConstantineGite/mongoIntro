@@ -2,10 +2,17 @@ import mongoose, { Mongoose } from "mongoose";
 mongoose.Promise = Promise;
 
 export enum ECollection {
-	USERS    =  "users",
-	ROLES    =  "roles",
-	PROVIDER =  "provider",
-	GROUPS   =  "groups"
+	USERS     =  "users",
+	ROLES     =  "roles",
+	GROUPS    =  "groups",
+	PROVIDER  =  "provider",
+	CAMPAIGN  =  "campaign",
+	CONSTANT  =  "constant",
+	CONTENT   =  "content",
+	PLACEMENT =  "placement",
+	RATES 	  =  "rates",
+	ACTIVITY = "activity"
+
 }
 
 export default {

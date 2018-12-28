@@ -10,7 +10,8 @@ interface IRoleSchema extends Document {
 const roleSchema: Schema = new mongoose.Schema({
 	name: {
 		type: String,
-		required: true
+		required: true,
+		default: "ipsum lorem dolor"
 	},
 	priviligies: {
 		type: [Object],

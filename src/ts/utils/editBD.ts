@@ -3,14 +3,22 @@ import { ECollection } from "./db";
 import Users from "../models/user.model";
 import Roles from "../models/role.model";
 import Groups from "../models/group.model";
-import Provider from "../models/provider";
+import Provider from "../models/provider.model";
+import Activity from "../models/activity.model";
+import Campaign from "../models/campaign.model";
+import Constant from "../models/constant.model";
+import Content from "../models/content.model";
+import Placement from "../models/placement.model";
+import Rates from "../models/rates.model";
 import { populations, pagination } from "../utils/servisesDB";
 
 export { ECollection };
 
-const _SCHEMAS = [Users, Roles, Groups, Provider];
+const _SCHEMAS = [Users, Roles, Groups, Provider, Activity, Campaign, Constant, Content, Placement, Rates];
 
 export const createBdObj = async (collection: ECollection, data: Document): Promise<void> => {
+	// console.log(data, "data");
+	// console.log(_SCHEMAS[collection], "_SCHEMAS[collection]");
 	Db.model(collection, _SCHEMAS[collection]).create(data);
 };
 
@@ -47,7 +55,5 @@ export const filterResult = async (collection: ECollection, _id: string, fields:
 		obj[el[0]] 	= el[1];
 		return obj;
 	});
-	//return Db.model(collection, _SCHEMAS[collection]).find({$and: param});
-	//return populations(collection, _id, fields);
-	//return pagination(collection, _id, fields);
+	return Db.model(collection, _SCHEMAS[collection]).find({$and: param});
 };

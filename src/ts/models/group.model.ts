@@ -5,8 +5,30 @@ interface IGroupSchema extends Document {
 }
 
 const groupSchema: Schema = new mongoose.Schema({
-	name : {
-		type: String
+	name: {
+		type: String,
+		required: true,
+		default: "test"
+	},
+	description: {
+		type: String,
+		required: true,
+		default: "test"
+	},
+	email: {
+		type: String,
+		required: true,
+		default: "test"
+	},
+	telephone: {
+		type: String,
+		required: true,
+		default: "test"
+	},
+	visitingAddress: {
+		type: String,
+		required: true,
+		default: "test"
 	}
 });
 

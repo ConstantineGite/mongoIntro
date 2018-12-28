@@ -14,7 +14,6 @@ app.options("/*", corb);
 app.use(express.static("./intarface/build/"));
 
 app.get("/", (req: Request, res: Response): void => {
-	// розкоментировать при продакшене
 	const dataHTML = fs.readFileSync("./intarface/build/index.html");
 	res.end(dataHTML);
 });

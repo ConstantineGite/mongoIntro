@@ -2,7 +2,7 @@ import mongoose, { Document, Model, Schema } from "mongoose";
 
 import { IPriviligies } from "./../data/const";
 
-interface IRoleSchema extends Document {
+interface IProviderSchema extends Document {
 	name: string;
 	priviligies: IPriviligies[];
 }
@@ -10,12 +10,13 @@ interface IRoleSchema extends Document {
 const providerSchema: Schema = new mongoose.Schema({
 	name: {
 		type: String,
-		required: true
-	},
+		required: true,
+		default: "testID3482384728934798789"
+	}/*,
 	priviligies: {
 		type: [Object],
 		required: true
-	}
+	}*/
 });
 
-export default mongoose.model<IRoleSchema>("provider", providerSchema);
+export default mongoose.model<IProviderSchema>("provider", providerSchema);

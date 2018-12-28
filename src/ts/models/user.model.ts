@@ -10,34 +10,48 @@ export interface IUserSchema extends mongoose.Document {
 
 const userSchema = new Schema({
 	userName: {
-		type: String
+		type: String,
+		required: true,
+		default: "ipsum dolor amet"
 	},
-	firstName : {
-		type: String
+	firstName: {
+		type: String,
+		required: true,
+		default: "ipsum dolor amet"
 	},
-	lastName : {
-		type: String
+	lastName: {
+		type: String,
+		required: true,
+		default: "ipsum dolor amet"
 	},
-	password : {
-		type: String
+	approved: {
+		type: Boolean,
+		required: true,
+		default: false
 	},
-	email : {
-		type: String
+	email: {
+		type: String,
+		required: true,
+		default: "test@gmail.com"
 	},
 	telephone: {
-		type: String
+		type: String,
+		required: true,
+		default: "+38063385283"
 	},
 	visitingAdress : {
+		type: String,
+		required: true,
+		default: "Test addres"
+	},
+	avatar: {
 		type: String
 	},
-	avatar : {
-		type: String
-	},
-	groups : {
+	groups: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "groups"
 	},
-	roles : [{
+	roles: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "roles"
 	}]
