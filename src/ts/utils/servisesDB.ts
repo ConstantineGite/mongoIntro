@@ -3,18 +3,17 @@ import { ECollection } from "./db";
 import Users from "../models/user.model";
 import Roles from "../models/role.model";
 import Groups from "../models/group.model";
-import Provider from "../models/provider.model";
 import Activity from "../models/activity.model";
-import Campaign from "../models/campaign.model";
+import Campaigns from "../models/campaign.model";
 import Constant from "../models/constant.model";
 import Content from "../models/content.model";
-import Placement from "../models/placement.model";
+import Placements from "../models/placement.model";
 import Rates from "../models/rates.model";
 import { string } from "prop-types";
 
 export { ECollection };
 
-const _SCHEMAS = [Users, Roles, Groups, Provider, Activity, Campaign, Constant, Content, Placement, Rates];
+const _SCHEMAS = [Users, Roles, Groups,  Activity, Campaigns, Constant, Content, Placements, Rates];
 
 export const  populations = async (collection: Document, id: string, fields: string): Promise< object | null> => {
 	const  rValue = collection.populate({ path: "roles", select: "priviligies", model: Roles });

@@ -52,14 +52,22 @@ const campaingnSchema: Schema = new mongoose.Schema({
 			"mon", "tue", "wen"
 		]
 	},
-	groups : {
+	groups: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "groups"
 	},
-	rates : {
+	rates: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "rates"
+	},
+	content: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "compaign"
+	},
+	placaments : {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "placaments"
 	}
 });
 
-export default mongoose.model<ICampaignSchema>("campaign", campaingnSchema);
+export default mongoose.model<ICampaignSchema>("campaigns", campaingnSchema);

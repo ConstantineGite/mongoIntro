@@ -3,23 +3,29 @@ import { ECollection } from "./db";
 import Users from "../models/user.model";
 import Roles from "../models/role.model";
 import Groups from "../models/group.model";
-import Provider from "../models/provider.model";
 import Activity from "../models/activity.model";
-import Campaign from "../models/campaign.model";
+import Campaigns from "../models/campaign.model";
 import Constant from "../models/constant.model";
 import Content from "../models/content.model";
-import Placement from "../models/placement.model";
+import Placements from "../models/placement.model";
 import Rates from "../models/rates.model";
 import { populations, pagination } from "../utils/servisesDB";
 
 export { ECollection };
 
-const _SCHEMAS = [Users, Roles, Groups, Provider, Activity, Campaign, Constant, Content, Placement, Rates];
+const _SCHEMAS = [Users, Roles, Groups, Activity, Campaigns, Constant, Content, Placements, Rates];
+
+export const repeatCheck = (collection: ECollection): Promise => {
+	const testID = "playerID_2312312939141934";
+	return Placements.find({ id: testID })
+};
 
 export const createBdObj = async (collection: ECollection, data: Document): Promise<void> => {
-	// console.log(data, "data");
-	// console.log(_SCHEMAS[collection], "_SCHEMAS[collection]");
-	Db.model(collection, _SCHEMAS[collection]).create(data);
+	let test = await repeatCheck(collection);
+	//-- Проверяет есть ли елемент с даным именем
+	if (!test[0]){
+		Db.model(collection, _SCHEMAS[collection]).create(data);
+	}
 };
 
 export const updateBdObj = async (collection: ECollection, data: Document): Promise<Db.Document | null> => {
@@ -40,7 +46,6 @@ export const deleteDbObj = async (collection: ECollection, _id: string): Promise
 export const returnPartial = async (collection: ECollection, _id: string, fields: string): Promise< object | null> => {
 	let param  = fields.split("%2F");
 	param.shift();
-	console.log(param, "param");
 	if (param[0] === "") param = [];
 	const rValue = Db.model(collection, _SCHEMAS[collection]).find({ _id }, param);
 	return 	(param.length === 0) ? null : rValue;
@@ -55,5 +60,16 @@ export const filterResult = async (collection: ECollection, _id: string, fields:
 		obj[el[0]] 	= el[1];
 		return obj;
 	});
-	return Db.model(collection, _SCHEMAS[collection]).find({$and: param});
+	return Db.model(collection, _SCHEMAS[collection]).find({ $and: param });
+};
+
+export const createPlaylist = async (collection: ECollection, _id: string, fields: string): Promise< object | null> => {
+	const testID = "playerID_2312312939141934";
+	const plasmentId = await Placements.find({ id: testID });
+	//.then(() => {
+	// 	console.log(plasmentId, "plasmentId");
+	// })
+	//const Campaign.find({}).populate({ path: "placament", select: "placament", model: Placements }); // Получаем кампании
+	return plasmentId;
+
 };
