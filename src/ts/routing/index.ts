@@ -5,7 +5,7 @@ import { routing } from "./API";
 import * as fs from "fs";
 
 const _API_V = "v1";
-const _PORT = 80;
+const _PORT = 82;
 
 const app = express();
 
