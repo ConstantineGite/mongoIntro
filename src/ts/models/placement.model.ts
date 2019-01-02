@@ -13,8 +13,8 @@ const placementSchema: Schema = new mongoose.Schema({
 	},
 	id : {
 		type: String,
-		required: true,
-		default: "placement_id"
+	//	required: true,
+		default: ""
 	},
 	pricePerSecond : {
 		type: String,
@@ -52,4 +52,4 @@ const placementSchema: Schema = new mongoose.Schema({
 	}
 });
 
-export default mongoose.model<IPlacementSchema>("placement", placementSchema);
+export default mongoose.model<IPlacementSchema>("placements", placementSchema);

@@ -5,7 +5,7 @@ import { routing } from "./API";
 import * as fs from "fs";
 
 const _API_V = "v1";
-const _PORT = 80;
+const _PORT = 3000;
 
 const app = express();
 
@@ -25,7 +25,7 @@ for (const route in ECollection) {
 }
 
 export const start = (): void => {
-	app.listen(_PORT, "192.168.10.3", (): void => {
+	app.listen(_PORT, "192.168.0.100", (): void => {
 		console.log(`Example app listening on port ${_PORT}!`);
 	});
 };

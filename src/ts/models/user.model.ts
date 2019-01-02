@@ -47,10 +47,10 @@ const userSchema = new Schema({
 	avatar: {
 		type: String
 	},
-	groups: {
+	groups: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "groups"
-	},
+	}],
 	roles: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "roles"

@@ -6,12 +6,12 @@ export enum ECollection {
 	ROLES     =  "roles",
 	GROUPS    =  "groups",
 	PROVIDER  =  "provider",
-	CAMPAIGN  =  "campaign",
+	CAMPAIGNS  =  "campaigns",
 	CONSTANT  =  "constant",
 	CONTENT   =  "content",
-	PLACEMENT =  "placement",
+	PLACEMENTS =  "placements",
 	RATES 	  =  "rates",
-	ACTIVITY = "activity"
+	ACTIVITY  =	 "activity"
 
 }
 
