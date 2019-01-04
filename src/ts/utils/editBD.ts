@@ -67,10 +67,10 @@ export const createPlaylist = async (collection: ECollection, _id: string, field
 	const testID = "playerID_2312312939141934";
 	const plasmentId = await Placements.find({ id: testID });
 	return [
-		"\testADW\inception_trailer.mp4",
-		"\testADW\big_buck_bunny_720p_1mb.mp4",
-		"\testADW\inception_trailer.mp4",
-		"\testADW\maxresdefault.jpg"
+		"/testADW/inception_trailer.mp4",
+		"/testADW/big_buck_bunny_720p_1mb.mp4",
+		"/testADW/inception_trailer.mp4",
+		"/testADW/maxresdefault.jpg"
 	]
 
 };
