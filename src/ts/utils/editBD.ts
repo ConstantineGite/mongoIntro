@@ -66,10 +66,11 @@ export const filterResult = async (collection: ECollection, _id: string, fields:
 export const createPlaylist = async (collection: ECollection, _id: string, fields: string): Promise< object | null> => {
 	const testID = "playerID_2312312939141934";
 	const plasmentId = await Placements.find({ id: testID });
-	//.then(() => {
-	// 	console.log(plasmentId, "plasmentId");
-	// })
-	//const Campaign.find({}).populate({ path: "placament", select: "placament", model: Placements }); // Получаем кампании
-	return plasmentId;
+	return [
+		"/localhost_PADS/testADW/inception_trailer.mp4",
+		"/localhost_PADS/testADW/big_buck_bunny_720p_1mb.mp4",
+		"/localhost_PADS/testADW/inception_trailer.mp4",
+		"/localhost_PADS/testADW/maxresdefault.jpg"
+	]
 
 };
